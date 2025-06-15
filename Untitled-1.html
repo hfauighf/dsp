@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>DSP 选择题自测</title>
+  <style>
+    body { font-family: "Microsoft YaHei", Arial, sans-serif; margin: 40px; background: #f4f6fa; }
+    .quiz-box { background: #fff; padding: 30px; max-width: 800px; margin: auto; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
+    h1 { text-align: center; }
+    .question { margin: 24px 0 12px 0; }
+    .options label { display: block; margin: 4px 0; }
+    .submit-btn { display: block; margin: 28px auto 0 auto; padding: 12px 32px; font-size: 18px; background: #0074d9; color: #fff; border: none; border-radius: 5px; cursor: pointer;}
+    .submit-btn:hover { background: #005fa3; }
+    .score { text-align: center; font-size: 22px; margin-top: 32px; color: #0074d9;}
+    .explain { color: #888; font-size: 14px; margin-left: 2em;}
+    .correct { color: green; }
+    .wrong { color: red; }
+  </style>
+</head>
+<body>
+  <div class="quiz-box">
+    <h1>DSP 选择题自测</h1>
+    <form id="quizForm">
+      <div id="quiz"></div>
+      <button class="submit-btn" type="submit">提交答案</button>
+    </form>
+    <div id="score" class="score"></div>
+  </div>
+  <script>
+    // 题目数据
+    const questions = [
+      // 第1章
+      { q: "TMS320 C5XX主要应用于（  ）领域。", opts: ["A、自动控制", "B、语音处理", "C、浮点运算", "D、图像处理"], ans: 1 },
+      { q: "TMS320 C2XX主要应用于（  ）领域。", opts: ["A、自动控制", "B、语音处理", "C、浮点运算", "D、图像处理"], ans: 0 },
+      { q: "TMS320 C6XX主要应用于（  ）领域。", opts: ["A、自动控制", "B、语音处理", "C、浮点运算", "D、图像处理"], ans: 3 },
+      { q: "TMS320 C3XX主要应用于（  ）领域。", opts: ["A、自动控制", "B、语音处理", "C、浮点运算", "D、图像处理"], ans: 2 },
+      { q: "采用DSP进行数字信号处理属于（  ）实现方法。", opts: ["A、硬件", "B、软件", "C、软硬件结合", "D、以上都不是"], ans: 2 },
+      { q: "可编程数字信号处理器简称（  ）。", opts: ["A、MCU", "B、CPU", "C、PUC", "D、DSP"], ans: 3 },
+      // 第2章
+      { q: "通过STl的OBJMODE和AMODE组合，选定C28x模式的是（  ）。", opts: ["A、00", "B、01", "C、10", "D、11"], ans: 2 },
+      { q: "选定C27x目标-兼容模式的是（  ）。", opts: ["A、00", "B、01", "C、10", "D、11"], ans: 0 },
+      { q: "选定C2xLP源-兼容模式的是（  ）。", opts: ["A、00", "B、01", "C、10", "D、11"], ans: 3 },
+      { q: "同一机器周期内，CPU不能同时进行的操作是（  ）。", opts: [
+        "A．程序空间读操作和数据空间的读操作",
+        "B．程序空间写操作和程序空间的读操作",
+        "C．数据空间读操作和数据空间的写操作",
+        "D．程序空间读操作和数据空间的写操作"
+      ], ans: 1 },
+      { q: "同一机器周期内，CPU能同时进行的操作是（  ）。", opts: [
+        "A．程序空间读操作和数据空间的读操作",
+        "B．程序空间写操作和程序空间的读操作",
+        "C．程序空间写操作和数据空间的写操作",
+        "D．以上都不发生冲突"
+      ], ans: 0 },
+      { q: "TMS320F2812 DSP采用的结构是（  ）。", opts: ["A、哈佛结构", "B、冯•诺依曼结构", "C、矩阵结构", "D、以上都不是"], ans: 0 },
+      { q: "TMS320F2812 DSP有（  ）组数据总线。", opts: ["2", "3", "4", "6"], ans: 1 },
+      { q: "TMS320F2812 DSP有（  ）组地址总线。", opts: ["2", "3", "4", "6"], ans: 1 },
+      { q: "TMS320F2812 DSP采用改进的哈佛结构，围绕（  ）条16位总线建立。", opts: ["2", "3", "4", "6"], ans: 3 },
+      { q: "TMS320F2812 DSP采用了（  ）级流水线操作。", opts: ["6", "7", "8", "9"], ans: 2 },
+      // 第3章
+      { q: "SARAM寻址空间有（  ）。", opts: [
+        "A．000000h～0007FFh，008000h～009FFFh，3F8000h～3F9FFFh",
+        "B．0x3D8000～0x3F7FFF",
+        "C．3D7800h~3D7BFFh",
+        "D．3FF000h~3FFFFFh"
+      ], ans: 0 },
+      { q: "片上Flash存储器寻址空间有（  ）。", opts: [
+        "A．000000h～0007FFh，008000h～009FFFh，3F8000h～3F9FFFh",
+        "B．0x3D8000～0x3F7FFF",
+        "C．3D7800h~3D7BFFh",
+        "D．3FF000h~3FFFFFh"
+      ], ans: 1 },
+      { q: "OTP存储器寻址空间有（  ）。", opts: [
+        "A．000000h～0007FFh，008000h～009FFFh，3F8000h～3F9FFFh",
+        "B．0x3D8000～0x3F7FFF",
+        "C．3D7800h~3D7BFFh",
+        "D．3FF000h~3FFFFFh"
+      ], ans: 2 },
+      { q: "BootROM寻址空间有（  ）。", opts: [
+        "A．000000h～0007FFh，008000h～009FFFh，3F8000h～3F9FFFh",
+        "B．0x3D8000～0x3F7FFF",
+        "C．3D7800h~3D7BFFh",
+        "D．3FF000h~3FFFFFh"
+      ], ans: 3 },
+      // 第4章
+      { q: "软硬件复位时，STl的VMAP=1，中断向量为（  ）。", opts: ["A、FFC0H", "B、FF80H", "C、0080H", "D、0000H"], ans: 0 },
+      { q: "软硬件复位时，STl的VMAP=0，中断向量为（  ）。", opts: ["A、FFC0H", "B、FF80H", "C、0080H", "D、0000H"], ans: 3 },
+      { q: "32个中断源分为14级，其中（  ）级别最高。", opts: ["A、INTR", "B、NMI", "C、RS", "D、INT0"], ans: 2 },
+      // 第5章
+      { q: "对称波形产生：通用定时器比较操作在（  ）时。", opts: ["A. 连续增/减计数模式", "B. 连续增计数模式", "C. 定向增/减计数模式", "D.以上都可以"], ans: 0 },
+      { q: "非对称波形产生：通用定时器比较操作在（  ）时。", opts: ["A. 连续增/减计数模式", "B. 连续增计数模式", "C. 定向增/减计数模式", "D.以上都可以"], ans: 1 },
+      { q: "任意波形产生：通用定时器比较操作在（  ）时。", opts: ["A. 连续增/减计数模式", "B. 连续增计数模式", "C. 定向增/减计数模式", "D.以上都可以"], ans: 2 },
+      { q: "事件管理器设置为（  ），产生PWM信号。", opts: ["A．定时器比较方式", "B.捕获方式", "C.正交编码方式", "D.ADC启动方式"], ans: 0 },
+      { q: "事件管理器设置为（  ），实现通信模式。", opts: ["A．定时器比较方式", "B.捕获方式", "C.正交编码方式", "D.ADC启动方式"], ans: 1 },
+      { q: "事件管理器设置为（  ），电机位置和速度测试。", opts: ["A．定时器比较方式", "B.捕获方式", "C.正交编码方式", "D.ADC启动方式"], ans: 2 },
+      // 第6章
+      { q: "直接寻址方式，DP应为（  ）。地址0860h：", opts: ["A、08h", "B、0fh", "C、21", "D、300h"], ans: 2 },
+      { q: "SP=460h，把0433hAL送AL，应执行（  ）。", opts: [
+        "A、MOV ACC，-SP（45）",
+        "B、MOVL ACC，-SP（2D）",
+        "C、MOV AL，-SP（45）",
+        "D、MOVL ACC，-SP（2D）"
+      ], ans: 2 },
+      { q: "TMS320F2812 DSP共有302条指令，分为（  ）大类。", opts: ["A、15", "B、17", "C、19", "D、21"], ans: 1 },
+      // 第7章
+      { q: "目标程序文件扩展名：", opts: ["A、.obj", "B、.cmd", "C、.out", "D、.asm"], ans: 0 },
+      { q: "源程序文件扩展名：", opts: ["A、.obj", "B、.cmd", "C、.out", "D、.asm"], ans: 3 },
+      { q: "链接文件扩展名：", opts: ["A、.obj", "B、.cmd", "C、.out", "D、.asm"], ans: 1 },
+      { q: "宏与子程序错误说法是（  ）。", opts: [
+        "A、宏调用是用符号替换代码块；子程序调用指针转移执行。",
+        "B、宏调用快但存储多；子程序调用慢但存储省。",
+        "C、宏要优于子程序，应优先用宏简化编程并提速。",
+        "D、存储有限时，应舍速度选子程序省空间。"
+      ], ans: 2 },
+      { q: "下列伪指令中错误的是（  ）。", opts: [
+        "A、.copy init_DSP.h",
+        "B、123 .usect  “var1”,1",
+        "C、.space 100h*16",
+        "D、.GLOBAL  x,y,z"
+      ], ans: 1 },
+      { q: "链接器的作用包括：", opts: [
+        "A、全部都包括",
+        "B、除生成列表文件.lst外都包括",
+        "C、除生成目标代码.obj文件外都包括",
+        "D、除生成输出文件列表外都包括"
+      ], ans: 0 },
+      { q: "下列语句中，使用正确的是（多选，选C/D）。", opts: [
+        "A、123 .usect  “var1”,1",
+        "B、SPLK 1234h,*+,AR4",
+        "C、.copy init.h",
+        "D、.global  x,y,z"
+      ], ans: [2,3] },
+      // 第9章
+      { q: "Q格式正确说法：", opts: [
+        "A、Q越大，数值范围越大，精度也越高",
+        "B、Q越大，数值范围越小，但精度越高",
+        "C、Q越大，数值范围越大，但精度越低",
+        "D、Q越大，数值范围越小，精度也越低"
+      ], ans: 1 },
+      { q: "FFT的位倒序寻址方式：", opts: [
+        "A、直接寻址",
+        "B、间接寻址",
+        "C、绝对地址寻址",
+        "D、立即数寻址"
+      ], ans: 2 },
+      { q: "C28X DSP无除法指令，可用（  ）实现除法。", opts: [
+        "A．SUBS", "B. ADDC", "C.  SUBC", "D. MAC"
+      ], ans: 2 },
+      { q: "高频信号选择（  ）滤波器。", opts: [
+        "A．LC", "B、有源滤波器", "C、IIR", "D、FIR"
+      ], ans: 0 },
+      { q: "低频信号选择（  ）滤波器。", opts: [
+        "A．LC", "B、有源滤波器", "C、IIR", "D、FIR"
+      ], ans: 1 },
+      { q: "数字语音信号选择（  ）滤波器。", opts: [
+        "A．LC", "B、有源滤波器", "C、IIR", "D、FIR"
+      ], ans: 3 },
+      { q: "数字图像信号选择（  ）滤波器。", opts: [
+        "A．LC", "B、有源滤波器", "C、IIR", "D、FIR"
+      ], ans: 2 }
+    ];
+
+    // 生成试题
+    const quizDiv = document.getElementById('quiz');
+    questions.forEach((item, idx) => {
+      const qWrap = document.createElement('div');
+      qWrap.className = 'question';
+      let html = `<b>${idx+1}. ${item.q}</b><div class="options">`;
+      item.opts.forEach((opt, i) => {
+        let type = Array.isArray(item.ans) ? 'checkbox' : 'radio';
+        let name = Array.isArray(item.ans) ? `q${idx}[]` : `q${idx}`;
+        html += `<label><input type="${type}" name="${name}" value="${i}"> ${opt}</label>`;
+      });
+      html += '</div>';
+      qWrap.innerHTML = html;
+      quizDiv.appendChild(qWrap);
+    });
+
+    // 答案和批改
+    document.getElementById('quizForm').onsubmit = function(e){
+      e.preventDefault();
+      let right = 0;
+      let total = questions.length;
+      let details = "";
+      questions.forEach((item, idx) => {
+        let userAns;
+        if(Array.isArray(item.ans)){
+          userAns = [];
+          document.querySelectorAll(`input[name="q${idx}[]"]:checked`).forEach(c => userAns.push(Number(c.value)));
+          userAns.sort();
+        }else{
+          const sel = document.querySelector(`input[name="q${idx}"]:checked`);
+          userAns = sel ? Number(sel.value) : null;
+        }
+        let ok = false;
+        if(Array.isArray(item.ans)){
+          ok = JSON.stringify(userAns) === JSON.stringify(item.ans);
+        }else{
+          ok = userAns === item.ans;
+        }
+        if(ok) right++;
+        details += `<div>${idx+1}. <span class="${ok?'correct':'wrong'}">${ok?'✔':'✘'}</span> 正确答案：${Array.isArray(item.ans) ? item.ans.map(i=>String.fromCharCode(65+i)).join(',') : String.fromCharCode(65+item.ans)}</div>`;
+      });
+      document.getElementById('score').innerHTML = `得分：${right} / ${total}<br><br>${details}`;
+      window.scrollTo(0,document.body.scrollHeight);
+    }
+  </script>
+</body>
+</html>
