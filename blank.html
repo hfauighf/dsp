@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>DSP 填空题自测</title>
+    <style>
+        body { font-family: "Microsoft YaHei", Arial, sans-serif; margin: 24px; background: #f7f7f7; }
+        h1 { color: #276678; }
+        h2 { color: #1687a7; }
+        .section { background: #fff; margin-bottom: 32px; padding: 20px 32px 32px 32px; border-radius: 12px; box-shadow: 0 2px 8px #eee; }
+        .question { margin: 16px 0; }
+        .q-label { display:inline-block; width:28px; font-weight:bold; }
+        input[type="text"] { width: 200px; padding: 2px 5px; font-size: 1em; margin: 0 6px; }
+        button { padding: 10px 30px; background: #1687a7; color: #fff; border: none; border-radius: 5px; font-size: 1.1em; cursor: pointer;}
+        button:hover { background: #276678; }
+        .result { font-weight: bold; margin-top: 14px; }
+        .correct { color: green; }
+        .wrong { color: red; }
+        .tips { color: #999; font-size: 0.9em; }
+        .answers { display:none; }
+    </style>
+</head>
+<body>
+    <h1>DSP 填空题自测网页</h1>
+    <form id="quizForm" autocomplete="off">
+        <div class="section">
+            <h2>第一章 填空</h2>
+            <div class="question"><span class="q-label">1.</span> 数字信号处理中，常见的运算有大量实时计算和高度重复的数据处理，最常见的操作是 <input type="text" name="q1"> 操作。</div>
+            <div class="question"><span class="q-label">2.</span> 信号处理主要有三大用途：<input type="text" name="q2">、检测、估计。</div>
+            <div class="question"><span class="q-label">3.</span> 信号处理常用的三种方法：<input type="text" name="q3">、滤波、谱估计/自适应滤波。</div>
+            <div class="question"><span class="q-label">4.</span> 信息系统的三大环节是：采集、<input type="text" name="q4">、处理。</div>
+            <div class="question"><span class="q-label">5.</span> 常用算法口诀有：FIR、IIR、DFT、<input type="text" name="q5">。</div>
+            <div class="question"><span class="q-label">6.</span> 处理器提速依靠：器件进步、结构优化和 <input type="text" name="q6"> 技术。</div>
+            <div class="question"><span class="q-label">7.</span> DSP结构可记“哈流乘多特”，即哈弗结构、<input type="text" name="q7a">、硬件乘法、多处理单元、特殊指令。</div>
+            <div class="question"><span class="q-label">8.</span> DSP按用途分为 <input type="text" name="q8a"> 和专用DSP。</div>
+            <div class="question"><span class="q-label">9.</span> DSP按数据格式分为浮点型和 <input type="text" name="q9">。</div>
+        </div>
+
+        <div class="section">
+            <h2>第二章 填空</h2>
+            <div class="question"><span class="q-label">1.</span> C28x有三种模式，分别为C27x目标兼容模式、C28x模式和 <input type="text" name="q10">。</div>
+            <div class="question"><span class="q-label">2.</span> 模式选择由ST1寄存器的 <input type="text" name="q11a"> 和AMODE位决定。</div>
+            <div class="question"><span class="q-label">3.</span> CPU内核主要由CPU、仿真逻辑和 <input type="text" name="q12"> 组成。</div>
+            <div class="question"><span class="q-label">4.</span> CPU具有保护流水线、独立寄存器空间、ALU、<input type="text" name="q13a">、循环移位器、乘法器等特性。</div>
+            <div class="question"><span class="q-label">5.</span> F2812为32位、定点、改进 <input type="text" name="q14"> 结构、循环寻址。</div>
+            <div class="question"><span class="q-label">6.</span> 存储器接口有 <input type="text" name="q15"> 组地址总线和 <input type="text" name="q16"> 组数据总线。</div>
+            <div class="question"><span class="q-label">7.</span> CPU中断控制寄存器有IFR、IER和 <input type="text" name="q17">。</div>
+            <div class="question"><span class="q-label">8.</span> ACC累加器有32位，可表示为ACC、AH和 <input type="text" name="q18">。</div>
+        </div>
+
+        <div class="section">
+            <h2>第三章 填空</h2>
+            <div class="question"><span class="q-label">1.</span> 片内存储器类型有双访问DARAM、单访问SARAM、ROM和 <input type="text" name="q19">。</div>
+            <div class="question"><span class="q-label">2.</span> C28x数据地址空间为32位，即 <input type="text" name="q20"> 字数据空间。</div>
+            <div class="question"><span class="q-label">3.</span> 单周期SARAM的存储区间为0x000000H-0x0007FFH和 <input type="text" name="q21">。</div>
+        </div>
+        
+        <div class="section">
+            <h2>第四章 填空</h2>
+            <div class="question"><span class="q-label">1.</span> C28x中断类型有可屏蔽中断和 <input type="text" name="q22"> 中断。</div>
+            <div class="question"><span class="q-label">2.</span> PIE模块支持 <input type="text" name="q23"> 个中断，分12组。</div>
+            <div class="question"><span class="q-label">3.</span> 中断向量表映射，VMAP=0时位于 <input type="text" name="q24">，VMAP=1时位于顶部。</div>
+        </div>
+        <div class="section">
+            <h2>第五章 填空</h2>
+            <div class="question"><span class="q-label">1.</span> F281X有 <input type="text" name="q25"> 个事件管理器。</div>
+            <div class="question"><span class="q-label">2.</span> QEP电路主要用于连接光电编码器，获取 <input type="text" name="q26"> 和速率。</div>
+            <div class="question"><span class="q-label">3.</span> ADC常用三种触发方式：软件启动、事件管理器启动和 <input type="text" name="q27"> 启动。</div>
+        </div>
+        <div class="section">
+            <h2>第六章 填空</h2>
+            <div class="question"><span class="q-label">1.</span> C28x存储器主要寻址方式有直接寻址、堆栈寻址、间接寻址和 <input type="text" name="q28"> 寻址。</div>
+            <div class="question"><span class="q-label">2.</span> 堆栈数据访问地址等于SP减去 <input type="text" name="q29"> 位偏移量。</div>
+        </div>
+        <div class="section">
+            <h2>第七章 填空</h2>
+            <div class="question"><span class="q-label">1.</span> 链接器MEMORY伪指令用于 <input type="text" name="q30">。</div>
+            <div class="question"><span class="q-label">2.</span> 链接器SECTIONS伪指令决定输入段组合及 <input type="text" name="q31"> 在存储器中的位置。</div>
+        </div>
+        <div class="section">
+            <h2>第九章 填空</h2>
+            <div class="question"><span class="q-label">1.</span> 小数运算的优点是乘积“<input type="text" name="q32"> 增长”，溢出在低位。</div>
+            <div class="question"><span class="q-label">2.</span> FIR滤波器常见设计方法为 <input type="text" name="q33"> 法。</div>
+            <div class="question"><span class="q-label">3.</span> IIR滤波器实现方法有冲击响应不变法、双线性变换法和 <input type="text" name="q34">。</div>
+        </div>
+        <button type="button" onclick="checkAnswers()">提交并查看正确答案</button>
+    </form>
+    <div id="result" class="result"></div>
+    <div class="answers" id="answers">
+        <h2>参考答案</h2>
+        <ol>
+            <li>乘加</li>
+            <li>改善</li>
+            <li>波形分析</li>
+            <li>传输</li>
+            <li>卷积</li>
+            <li>并行</li>
+            <li>流水线</li>
+            <li>通用DSP</li>
+            <li>定点型</li>
+            <li>C2xLP源兼容模式</li>
+            <li>OBJMODE</li>
+            <li>接口</li>
+            <li>ARAU</li>
+            <li>哈佛</li>
+            <li>3</li>
+            <li>3</li>
+            <li>DBGIER</li>
+            <li>AL</li>
+            <li>Flash</li>
+            <li>4G</li>
+            <li>0x008000-0x009FFFH</li>
+            <li>不可屏蔽</li>
+            <li>96</li>
+            <li>0x000000h</li>
+            <li>2</li>
+            <li>位置</li>
+            <li>外部引脚</li>
+            <28>寄存器</28>
+            <29>6</29>
+            <30>配置目标系统内存</30>
+            <31>输出段</31>
+            <32>右</32>
+            <33>窗函数</33>
+            <34>阶跃响应不变法</34>
+        </ol>
+        <div class="tips">仅供参考，部分题目有多种表达方式。</div>
+    </div>
+    <script>
+        // 正确答案数组（按顺序，字符串全部小写处理，部分答案允许多种写法）
+        const answers = [
+            ["乘加","乘积和","乘加操作"], // 1
+            ["改善"], // 2
+            ["波形分析","变换"], // 3
+            ["传输"], // 4
+            ["卷积"], // 5
+            ["并行","并行技术"], // 6
+            ["流水线"], // 7
+            ["通用dsp"], // 8
+            ["定点型","定点"], // 9
+            ["c2xlp源兼容模式"], // 10
+            ["objmode"], // 11
+            ["接口"], // 12
+            ["arau"], // 13
+            ["哈佛"], // 14
+            ["3"], // 15
+            ["3"], // 16
+            ["dbgier"], // 17
+            ["al"], // 18
+            ["flash"], // 19
+            ["4g","4g字"], // 20
+            ["0x008000-0x009fffh","0x008000到0x009fffh"], // 21
+            ["不可屏蔽"], // 22
+            ["96"], // 23
+            ["0x000000h"], // 24
+            ["2"], // 25
+            ["位置"], // 26
+            ["外部引脚"], // 27
+            ["寄存器"], // 28
+            ["6"], // 29
+            ["配置目标系统内存","配置内存"], // 30
+            ["输出段"], // 31
+            ["右"], // 32
+            ["窗函数"], // 33
+            ["阶跃响应不变法"] // 34
+        ];
+        function checkAnswers() {
+            const form = document.getElementById('quizForm');
+            let correct = 0, total = answers.length;
+            let feedback = "";
+            for(let i=0;i<total;i++){
+                let userInput = form.elements["q"+(i+1)].value.trim().toLowerCase();
+                let ansArr = answers[i];
+                let isRight = ansArr.some(ans => userInput === ans || userInput === ans.replace(/法$/, ""));
+                if(isRight){
+                    feedback += `<span class='correct'>第${i+1}题：✔</span> `;
+                    correct++;
+                } else {
+                    feedback += `<span class='wrong'>第${i+1}题：✘</span> `;
+                }
+                if((i+1)%7===0) feedback+="<br>";
+            }
+            document.getElementById('result').innerHTML = `得分：${correct} / ${total}<br>${feedback}`;
+            document.getElementById('answers').style.display = "block";
+            window.scrollTo(0,document.body.scrollHeight);
+        }
+    </script>
+</body>
+</html>
